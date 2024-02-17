@@ -1,5 +1,5 @@
 # Using latest API version
-version: '3.9'
+version: '3.8'
 
 # Define services for App & DB
 services:
