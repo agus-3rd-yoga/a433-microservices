@@ -1,27 +1,52 @@
+# Using latest API version
 version: '3.9'
 
+# Define services for App & DB
 services:
-  # MongoDB service
+
+  # MongoDB database service
   item-db:
+
+    # Set name for database container
     container_name: item-db
+
+    # Set mongodb image version using tag
     image: docker.io/mongo:3
+
+    # Set container to automatically restart if error occurs
     restart: always
+    
+    # Map directory /data/db on container to persistence volume named app-db (should match to volume name manifest)
     volumes:
       - app-db:/data/db
 
-  # NodeJS service
+  # NodeJS app service
   item-app:
+
+    # Set name for app container
     container_name: item-app
+
+    # Set nodejs app image version using tag & using our newly created custom image
     image: docker.io/agus3rdyoga/item-app:v1
+
+    # Set container to automatically restart if error occurs
     restart: always
+    
+    # Set port maping with format: local/host -> container
     ports:
-      # Format: local -> container
-      - 80:3000
+      - "80:3000"
+
+    # Set environment variables to overrides configuration of container runtime services
     environment:
       PORT: 3000
       DB_HOST: item-db
+    
+    # To makesure item-app should waiting for item-db to be ready before creating/running item-app service/container
     depends_on: 
       - item-db
 
+# Define persistence volume to be used by container 
 volumes:
+
+  # Define persistence volume name
   app-db: {}
