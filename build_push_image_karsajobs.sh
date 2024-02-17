@@ -24,7 +24,7 @@ docker image ls
 name () {
 echo "Change image name to match DockerHub naming format"
 echo -e "---------------------------------------------------\n\n"
-docker tag $(docker image ls | grep -E 'karsajobs|latest' | awk '{print $3}'|tail -1) agus3rdyoga/karsajobs:latest
+docker tag $(docker image ls | grep -E '^karsajobs ' | awk '{print $3}'|tail -1) agus3rdyoga/karsajobs:latest
 echo "Renaming docker image label..."
 }
 
