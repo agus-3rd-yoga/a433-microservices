@@ -1,0 +1,27 @@
+version: '3.9'
+
+services:
+  # MongoDB service
+  item-db:
+    container_name: item-db
+    image: docker.io/mongo:3
+    restart: always
+    volumes:
+      - app-db:/data/db
+
+  # NodeJS service
+  item-app:
+    container_name: item-app
+    image: docker.io/agus3rdyoga/item-app:v1
+    restart: always
+    ports:
+      # Format: local -> container
+      - 80:3000
+    environment:
+      PORT: 3000
+      DB_HOST: item-db
+    depends_on: 
+      - item-db
+
+volumes:
+  app-db: {}
