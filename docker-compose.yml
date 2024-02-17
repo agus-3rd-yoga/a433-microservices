@@ -34,7 +34,7 @@ services:
     
     # Set port maping with format: local/host -> container
     ports:
-      - "8080:8080"
+      - "80:8080"
     
     # To makesure item-app should waiting for item-db to be ready before creating/running item-app service/container
     depends_on: 
