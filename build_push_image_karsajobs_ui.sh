@@ -10,7 +10,7 @@ clear
 build () {
 echo "Build image from Dockerfile"
 echo -e "----------------------------\n\n"
-docker build --tag karsajobs-ui:latest -f /home/sysadmin/backend/Dockerfile .
+docker build --tag karsajobs-ui:latest -f /home/sysadmin/frontend/Dockerfile .
 }
 
 ## Create function list to listing available local image
