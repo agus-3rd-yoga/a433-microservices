@@ -4,3 +4,4 @@
 Dockerfile
 *.yml
 .dockerignore
+README.md
