@@ -2,9 +2,9 @@ name: Build and Push Docker Image to Docker Hub
 
 on:
   push:
-    branches: [ "karsajobs", "karsajobs-ui" ]
+    branches: [ "karsajobs" ]
   pull_request:
-    branches: [ "karsajobs", "karsajobs-ui" ]
+    branches: [ "karsajobs" ]
 
 env:
   # Use docker.io for Docker Hub if empty
