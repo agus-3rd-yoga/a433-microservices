@@ -2,7 +2,7 @@
 
 ## Create function common to make output looks clean 
 common () {
-sleep 5
+sleep 3
 clear
 }
 
