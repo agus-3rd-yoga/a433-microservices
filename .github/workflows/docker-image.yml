@@ -2,9 +2,9 @@ name: Karsajobs Build
 
 on:
   push:
-    branches: [ "karsajobs" ]
+    branches: [ "*" ]
   pull_request:
-    branches: [ "karsajobs" ]
+    branches: [ "*" ]
 
 env:
   # Use docker.io for Docker Hub if empty
