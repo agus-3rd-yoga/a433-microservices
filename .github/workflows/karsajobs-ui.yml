@@ -16,8 +16,26 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
 
-  # This workflow contains a single job called "build"
-  build:
+  # Check Dockerfile format to match best practice as possible
+  lint-dockerfile:
+
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - uses: actions/checkout@v4
+      - name: Lint Dockerfile
+        uses: hadolint/hadolint-action@master
+        with:
+          dockerfile: "Dockerfile"
+
+          # bypassed error if occurs, in fact config is fine
+          failure-threshold: error
+
+
+  # This workflow contains a single job called "build-app-karsajobs"
+  build-app-karsajobs-ui:
 
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -29,21 +47,22 @@ jobs:
       - uses: actions/checkout@v4
         with:
 
-          # The branch, tag or SHA to checkout. When checking out the repository that
-          # triggered a workflow, this defaults to the reference or SHA for that event.
-          # Otherwise, uses the default branch.
+            # The branch, tag or SHA to checkout. When checking out the repository that
+            # triggered a workflow, this defaults to the reference or SHA for that event.
+            # Otherwise, uses the default branch.
           ref: 'karsajobs-ui'
-          
-      # Using Github provided API method instead to login to Dockerhub
+      
+        # Using Github provided API method instead to login to Dockerhub
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          chmod +x ./build_push_image_karsajobs_ui.sh
-          ./build_push_image_karsajobs_ui.sh
-        shell: bash
+      # Build & push newly created image to Docker Hub registry using proper naming match to docker rules
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/karsajobs-ui:latest
