@@ -32,8 +32,7 @@ COPY . .
 RUN mkdir /build; \
     go build -o /build/ ./...
 
-#FROM gcr.io/distroless/base-debian12:debug
-FROM golang:1.20-alpine
+FROM gcr.io/distroless/static
 
 COPY --from=base /build .
 
