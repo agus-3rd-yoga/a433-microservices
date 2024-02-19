@@ -26,16 +26,15 @@ ENV CGO_ENABLED=0
 COPY go.mod .
 COPY go.sum .
 
-RUN go mod download
-RUN go mod verify
+RUN go mod download && go mod verify
 
 COPY . .
 RUN mkdir /build; \
     go build -o /build/ ./...
 
-FROM gcr.io/distroless/static
+FROM gcr.io/distroless/static:latest
 
-COPY --from=base /build .
+COPY --from=base /build ./
 
 EXPOSE 8080
 CMD ["/build/web"]
