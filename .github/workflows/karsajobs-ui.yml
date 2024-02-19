@@ -1,9 +1,9 @@
 # This is a basic workflow to help you get started with Actions
-
 name: Karsajobs-UI
 
 # Controls when the workflow will run
 on:
+
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
     branches: [ "*" ]
@@ -15,24 +15,31 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+
   # This workflow contains a single job called "build"
   build:
+
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
         with:
-            # The branch, tag or SHA to checkout. When checking out the repository that
+
+          # The branch, tag or SHA to checkout. When checking out the repository that
           # triggered a workflow, this defaults to the reference or SHA for that event.
           # Otherwise, uses the default branch.
           ref: 'karsajobs-ui'
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: pwd && ls -lah
+          
+      # Using Github provided API method instead to login to Dockerhub
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script

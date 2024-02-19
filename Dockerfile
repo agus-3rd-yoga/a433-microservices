@@ -23,8 +23,6 @@ COPY . /app
 
 RUN npm run build
 
-#RUN ls -lah /app/dist;ls -lah /app/public;ls -lah /app/src
-
 # STAGE 2
 
 FROM nginx:stable-alpine
