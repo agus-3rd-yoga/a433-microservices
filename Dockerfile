@@ -29,8 +29,9 @@ COPY go.sum .
 RUN go mod download
 RUN go mod verify
 
-RUN mkdir /build
-RUN go build -v -ldflags "-s -w -buildid=" -o ./build
+COPY . .
+RUN mkdir /build; \
+    go build -o /build/ ./...
 
 FROM gcr.io/distroless/static
 
