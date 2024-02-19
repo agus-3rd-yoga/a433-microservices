@@ -26,7 +26,7 @@ docker image ls
 name () {
 echo "Change image name to match DockerHub naming format"
 echo -e "---------------------------------------------------\n\n"
-docker tag $(docker image ls | grep -E '^karsajobs-ui ' | awk '{print $3}'|tail -1) $DOCKERHUB_USERNAME/karsajobs-ui:latest
+docker tag $(docker image ls | grep -E '^karsajobs-ui ' | awk '{print $3}'|tail -1) ${{ secrets.DOCKERHUB_USERNAME }}/karsajobs-ui:latest
 echo "Renaming docker image label..."
 }
 
@@ -34,14 +34,14 @@ echo "Renaming docker image label..."
 login () {
 echo "Login to docker hub"
 echo -e "--------------------\n\n"
-echo $DOCKERHUB_TOKEN | docker login -u $DOCKERHUB_USERNAME --password-stdin 
+echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin 
 }
 
 ## Create function upload to upload final image to dockerhub 
 upload () {
 echo "Upload image to docker hub"
 echo -e "---------------------------\n\n"
-docker push $DOCKERHUB_USERNAME/karsajobs-ui:latest
+docker push ${{ secrets.DOCKERHUB_USERNAME }}/karsajobs-ui:latest
 }
 
 ## Run all function in sequence following the rules from Dicoding material 
