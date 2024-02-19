@@ -56,5 +56,3 @@ login
 common
 upload
 common
-echo "All jobs done! You can now use this custom image from DockerHub"
-common
