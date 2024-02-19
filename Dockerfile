@@ -23,11 +23,11 @@ COPY . .
 
 RUN npm run build
 
+RUN ls -lah /
+
 # STAGE 2
 
 FROM nginx:stable-alpine
-
-RUN ls -lah;sleep 5
 
 COPY --from=build /build /usr/share/nginx/html
 
