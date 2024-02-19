@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export TERM=linux
+
 ## Create function common to make output looks clean 
 common () {
 sleep 3
@@ -10,7 +12,7 @@ clear
 build () {
 echo "Build image from Dockerfile"
 echo -e "----------------------------\n\n"
-docker build --tag karsajobs:latest -f /home/sysadmin/kubernetes/backend/Dockerfile .
+docker build --tag karsajobs:latest -f ./Dockerfile .
 }
 
 ## Create function list to listing available local image
@@ -32,7 +34,7 @@ echo "Renaming docker image label..."
 login () {
 echo "Login to docker hub"
 echo -e "--------------------\n\n"
-echo $TOKEN_DOCKER_HUB | docker login -u agus3rdyoga --password-stdin 
+echo ${{ secrets.DOCKERHUB_TOKEN}} | docker login -u agus3rdyoga --password-stdin
 }
 
 ## Create function upload to upload final image to dockerhub 
