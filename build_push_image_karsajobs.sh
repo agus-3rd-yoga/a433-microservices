@@ -34,7 +34,7 @@ echo "Renaming docker image label..."
 login () {
 echo "Login to docker hub"
 echo -e "--------------------\n\n"
-echo '${{ secrets.DOCKERHUB_TOKEN }}' | docker login -u agus3rdyoga --password-stdin
+echo -n ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u agus3rdyoga --password-stdin
 }
 
 ## Create function upload to upload final image to dockerhub 
