@@ -23,7 +23,7 @@ COPY . /app
 
 RUN npm run build
 
-RUN ls -lah /;ls -lah /app/{dist,public,src}
+RUN ls -lah /app/dist;ls -lah /app/public;ls -lah /app/src
 
 # STAGE 2
 
