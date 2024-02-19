@@ -18,7 +18,7 @@
 ## Make image size smaller
 FROM golang:1.15-alpine as base
 
-WORKDIR $GOPATH/src/smallest-golang/app/
+WORKDIR /go/src/github.com/dicodingacademy/karsajobs
 ENV GO111MODULE=on
 ENV APP_PORT=8080
 
