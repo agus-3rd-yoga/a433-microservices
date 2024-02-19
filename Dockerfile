@@ -15,7 +15,7 @@ FROM node:14-alpine AS build
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY package.json ./
 
 RUN npm install
 
@@ -23,13 +23,13 @@ COPY . /app
 
 RUN npm run build
 
-RUN ls -lah /app/dist;ls -lah /app/public;ls -lah /app/src
+#RUN ls -lah /app/dist;ls -lah /app/public;ls -lah /app/src
 
 # STAGE 2
 
 FROM nginx:stable-alpine
 
-COPY --from=build /app/build /usr/share/nginx/html
+COPY --from=build /app/dist /usr/share/nginx/html
 
 EXPOSE 8000
 
