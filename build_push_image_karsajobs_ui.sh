@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export TERM=linux
+
 ## Create function common to make output looks clean 
 common () {
 sleep 5
