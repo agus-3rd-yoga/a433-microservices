@@ -30,7 +30,7 @@ RUN go mod download
 RUN go mod verify
 
 RUN mkdir /build
-RUN go build -v -o -v -o XrayR -trimpath -ldflags "-s -w -buildid=" ./build
+RUN go build -v -ldflags "-s -w -buildid=" -o ./build
 
 FROM gcr.io/distroless/static
 
