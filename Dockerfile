@@ -21,6 +21,7 @@ FROM golang:1.15-alpine as base
 WORKDIR /go/src/github.com/dicodingacademy/karsajobs
 ENV GO111MODULE=on
 ENV APP_PORT=8080
+ENV CGO_ENABLED=0
 
 COPY go.mod .
 COPY go.sum .
@@ -29,7 +30,7 @@ RUN go mod download
 RUN go mod verify
 
 RUN mkdir /build
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o /build .
+RUN go build -v -o -v -o XrayR -trimpath -ldflags "-s -w -buildid=" ./build
 
 FROM gcr.io/distroless/static
 
