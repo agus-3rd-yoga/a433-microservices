@@ -23,7 +23,7 @@ COPY . .
 
 RUN npm run build
 
-RUN ls -lah /
+RUN ls -lah /app
 
 # STAGE 2
 
