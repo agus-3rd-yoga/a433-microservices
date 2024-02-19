@@ -31,11 +31,11 @@ echo "Renaming docker image label..."
 }
 
 ## Create function login to login to dockerhub using provided token stored on ~/.bashrc & exported as $TOKEN_DOCKER_HUB variable
-login () {
-echo "Login to docker hub"
-echo -e "--------------------\n\n"
-echo -n ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u agus3rdyoga --password-stdin
-}
+#login () {
+#echo "Login to docker hub"
+#echo -e "--------------------\n\n"
+#echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u agus3rdyoga --password-stdin
+#}
 
 ## Create function upload to upload final image to dockerhub 
 upload () {
@@ -54,7 +54,7 @@ name
 common
 list
 common
-login
+#login
 common
 upload
 common
