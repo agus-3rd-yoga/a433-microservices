@@ -30,6 +30,7 @@ docker tag $(docker image ls | grep -E '^karsajobs ' | awk '{print $3}'|tail -1)
 echo "Renaming docker image label..."
 }
 
+## Disable for Github Actions
 ## Create function login to login to dockerhub using provided token stored on ~/.bashrc & exported as $TOKEN_DOCKER_HUB variable
 #login () {
 #echo "Login to docker hub"
