@@ -48,14 +48,14 @@ docker push agus3rdyoga/karsajobs-ui:latest
 ## Run all function in sequence following the rules from Dicoding material 
 clear
 build
-common
-list
-common
-name
-common
-list
-common
+#common
+#list
+#common
+#name
+#common
+#list
+#common
 #login
-common
-upload
-common
+#common
+#upload
+#common

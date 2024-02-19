@@ -19,7 +19,7 @@ COPY package*.json ./
 
 RUN npm install --production
 
-COPY . /app
+COPY . .
 
 RUN npm run build
 
