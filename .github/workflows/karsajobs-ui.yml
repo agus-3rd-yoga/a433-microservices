@@ -30,10 +30,6 @@ jobs:
         with:
           dockerfile: "Dockerfile"
 
-          # bypassed error if occurs, in fact config is fine
-          failure-threshold: error
-
-
   # This workflow contains a single job called "build-app-karsajobs"
   build-app-karsajobs-ui:
 
