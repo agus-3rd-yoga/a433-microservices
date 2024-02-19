@@ -26,22 +26,23 @@ docker image ls
 name () {
 echo "Change image name to match DockerHub naming format"
 echo -e "---------------------------------------------------\n\n"
-docker tag $(docker image ls | grep -E '^karsajobs-ui ' | awk '{print $3}'|tail -1) ${{ secrets.DOCKERHUB_USERNAME }}/karsajobs-ui:latest
+docker tag $(docker image ls | grep -E '^karsajobs-ui ' | awk '{print $3}'|tail -1) agus3rdyoga/karsajobs-ui:latest
 echo "Renaming docker image label..."
 }
 
+## Disable for Github Actions
 ## Create function login to login to dockerhub using provided token stored on ~/.bashrc & exported as $TOKEN_DOCKER_HUB variable
-login () {
-echo "Login to docker hub"
-echo -e "--------------------\n\n"
-echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin 
-}
+#login () {
+#echo "Login to docker hub"
+#echo -e "--------------------\n\n"
+#echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin 
+#}
 
 ## Create function upload to upload final image to dockerhub 
 upload () {
 echo "Upload image to docker hub"
 echo -e "---------------------------\n\n"
-docker push ${{ secrets.DOCKERHUB_USERNAME }}/karsajobs-ui:latest
+docker push agus3rdyoga/karsajobs-ui:latest
 }
 
 ## Run all function in sequence following the rules from Dicoding material 
@@ -54,7 +55,7 @@ name
 common
 list
 common
-login
+#login
 common
 upload
 common
