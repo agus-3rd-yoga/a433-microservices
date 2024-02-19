@@ -16,7 +16,7 @@
 #CMD ["/build/web"]
 
 ## Make image size smaller
-FROM golang:alpine as base
+FROM golang:1.20-alpine as base
 
 WORKDIR /go/src/github.com/dicodingacademy/karsajobs
 ENV GO111MODULE=on
@@ -33,6 +33,7 @@ RUN mkdir /build; \
     go build -o /build/ ./...
 
 #FROM gcr.io/distroless/base-debian12:debug
+FROM golang:1.20-alpine
 
 COPY --from=base /build .
 
