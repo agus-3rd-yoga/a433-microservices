@@ -32,7 +32,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: pwd && ls -lah && echo $DOCKERHUB_USERNAME && echo $DOCKERHUB_TOKEN
+        run: pwd && ls -lah && echo $GITHUB_TOKEN
 
       # Runs a set of commands using the runners shell
 #      - name: Run a multi-line script
