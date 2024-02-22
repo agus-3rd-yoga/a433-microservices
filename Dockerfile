@@ -11,21 +11,21 @@
 ## Make final image size smaller
 # STAGE 1
 
-FROM node:14-alpine AS build
+FROM node:alpine AS build
 
 WORKDIR /app
 
-COPY package.json ./
+COPY package*.json ./
 
 RUN npm install
 
-COPY . /app
+COPY . .
 
 RUN npm run build
 
 # STAGE 2
 
-FROM nginx:stable-alpine
+FROM nginx:alpine
 
 COPY --from=build /app/dist /usr/share/nginx/html
 
