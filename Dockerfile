@@ -1,6 +1,6 @@
 ## STAGE 1
 # Set base image that we want to use for source (customized based on source, node is default for javascript source)
-FROM node:alpine AS build
+FROM node:16-alpine AS build
 
 # Set default location app/container starting point for deployment
 WORKDIR /app
