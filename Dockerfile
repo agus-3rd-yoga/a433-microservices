@@ -25,7 +25,7 @@ FROM nginx:alpine
 COPY --from=build /app/dist /usr/share/nginx/html
 
 # Set port access for traffic
-EXPOSE 8000
+EXPOSE 80
 
 # Set default command to running web server
 CMD ["nginx", "-g", "daemon off;"] 
