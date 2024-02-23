@@ -34,7 +34,7 @@ RUN mkdir /build; \
 
 FROM gcr.io/distroless/static
 
-COPY --from=base /build .
+COPY --from=base /build ./build
 
 EXPOSE 8080
 CMD ["/build/web"]
