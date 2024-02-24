@@ -27,4 +27,4 @@ EXPOSE 3000
 
 # Set default command to running web server
 #CMD ["nginx", "-g", "daemon off;"] 
-CMD node index.js
+CMD ["node", "index.js"]
