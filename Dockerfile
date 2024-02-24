@@ -21,7 +21,7 @@ RUN npm run build
 
 # Copies all final package/source to default directory service of web server
 #COPY --from=build /app/dist /usr/share/nginx/html
-COPY --from=build /app/build ./app
+COPY --from=build /app/dist ./app
 
 # Set port access for traffic
 EXPOSE 3000
