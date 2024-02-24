@@ -20,7 +20,8 @@ jobs:
 
   # Check Dockerfile format to match best practice as possible
   lint-dockerfile:
-
+    
+    name: Checking & Linting Dockerfile
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -35,7 +36,7 @@ jobs:
   # This workflow contains a single job called "build-app-karsajobs"
   build-and-push-image-to-Github-registries:
 
-    name: Push Docker image to Github registries
+    name: Pushing image to Github registry
 
     needs: ["lint-dockerfile"]
 
@@ -75,7 +76,7 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
       
 
-      - name: Build and push Docker image to Github Registry
+      - name: Building and pushing Docker image to Github Registry
         uses: docker/build-push-action@v5
         with:
           context: .
@@ -85,7 +86,7 @@ jobs:
             
   build-and-push-image-to-Dockerhub-registries:
 
-    name: Push Docker image to Dockerhub registries
+    name: Pushing image to Dockerhub registry
         
     needs: ["lint-dockerfile"]
         
@@ -117,7 +118,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       # Build & push newly created image to Docker Hub registry using proper naming match to docker rules
-      - name: Build and push Docker image to Docker hub Registry
+      - name: Building and pushing Docker image to Docker hub Registry
         uses: docker/build-push-action@v5
         with:
           context: .
