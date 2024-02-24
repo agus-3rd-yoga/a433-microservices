@@ -1,5 +1,5 @@
 # Set base image that we want to use for source (customized based on source, node is default for javascript source)
-FROM node:alpine AS build
+FROM node:alpine AS builder
 
 # Set default location app/container starting point for deployment
 WORKDIR /app
@@ -21,7 +21,7 @@ RUN npm run build
 
 # Copies all final package/source to default directory service of web server
 #COPY --from=build /app/dist /usr/share/nginx/html
-COPY --from=build /app/dist ./app
+COPY --from=builder /app ./app
 
 # Set port access for traffic
 EXPOSE 3000
