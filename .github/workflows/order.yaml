@@ -87,7 +87,7 @@ jobs:
 
     name: Push Docker image to Dockerhub registries
         
-    needs: ["build-and-push-image-to-Github-registries"]
+    needs: ["lint-dockerfile"]
         
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
