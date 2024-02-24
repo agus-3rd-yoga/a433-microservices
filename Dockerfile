@@ -14,16 +14,17 @@ RUN npm install
 COPY . .
 
 # Create final binary/package from fully deployed source
-RUN npm run build
+#RUN npm run build
 
 # Set base image for web server
-FROM nginx:alpine
+#FROM nginx:alpine
 
 # Copies all final package/source to default directory service of web server
-COPY --from=build /app/dist /usr/share/nginx/html
+#COPY --from=build /app/dist /usr/share/nginx/html
 
 # Set port access for traffic
-EXPOSE 80
+EXPOSE 3000
 
 # Set default command to running web server
-CMD ["nginx", "-g", "daemon off;"] 
+#CMD ["nginx", "-g", "daemon off;"] 
+CMD node index.js
