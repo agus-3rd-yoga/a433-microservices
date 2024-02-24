@@ -14,13 +14,14 @@ RUN npm install
 COPY . .
 
 # Create final binary/package from fully deployed source
-#RUN npm run build
+RUN npm run build
 
 # Set base image for web server
 #FROM nginx:alpine
 
 # Copies all final package/source to default directory service of web server
 #COPY --from=build /app/dist /usr/share/nginx/html
+COPY --from=build /app
 
 # Set port access for traffic
 EXPOSE 3000
