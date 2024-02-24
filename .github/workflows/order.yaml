@@ -78,7 +78,7 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
       
 
-      - name: Build and push Docker image
+      - name: Build and push Docker image to Github Registry
         uses: docker/build-push-action@v5
         with:
           context: .
@@ -87,9 +87,9 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}     
 
       # Build & push newly created image to Docker Hub registry using proper naming match to docker rules
-#      - name: Build and push
-#        uses: docker/build-push-action@v5
-#        with:
-#          context: .
-#          push: true
-#          tags: ${{ secrets.DOCKERHUB_USERNAME }}/karsajobs-ui:latest
+      - name: Build and push Docker image to Docker hub Registry
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/orderservice:latest
