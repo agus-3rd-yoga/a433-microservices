@@ -1,4 +1,4 @@
-module github.com/nothinux/karsajobs
+module github.com/dicodingacademy/karsajobs
 
 go 1.15
 

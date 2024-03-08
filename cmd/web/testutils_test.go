@@ -8,8 +8,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/nothinux/karsajobs/pkg/models"
-	"github.com/nothinux/karsajobs/pkg/models/mongodb"
+	"github.com/dicodingacademy/karsajobs/tree/master/pkg/models"
+	"github.com/dicodingacademy/karsajobs/tree/master/pkg/models/mongodb"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )

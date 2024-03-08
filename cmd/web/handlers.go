@@ -11,7 +11,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/readpref"
 
 	"github.com/go-chi/chi"
-	"github.com/nothinux/karsajobs/pkg/models"
+	"github.com/dicodingacademy/karsajobs/tree/master/pkg/models"
 )
 
 func home(w http.ResponseWriter, r *http.Request) {
