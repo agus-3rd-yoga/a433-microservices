@@ -7,7 +7,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo/options"
 
-//	"github.com/dicodingacademy/karsajobs/tree/master/pkg/models"
+	"github.com/agus-3rd-yoga/a433-microservices/tree/karsajobs/pkg/models"
 	"go.mongodb.org/mongo-driver/bson"
 
 	"go.mongodb.org/mongo-driver/mongo"

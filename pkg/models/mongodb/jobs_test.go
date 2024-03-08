@@ -10,7 +10,7 @@ import (
 
 	"context"
 
-//	"github.com/dicodingacademy/karsajobs/tree/master/pkg/models"
+	"github.com/agus-3rd-yoga/a433-microservices/tree/karsajobs/pkg/models"
 )
 
 func TestGetJobPosts(t *testing.T) {

@@ -1,4 +1,4 @@
-module github.com/dicodingacademy/karsajobs
+module github.com/agus-3rd-yoga/a433-microservices/tree/karsajobs
 
 go 1.15
 

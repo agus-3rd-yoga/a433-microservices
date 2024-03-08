@@ -9,9 +9,9 @@ import (
 	"testing"
 	"time"
 
-//	"github.com/dicodingacademy/karsajobs/tree/master/pkg/models/mongodb"
+	"github.com/agus-3rd-yoga/a433-microservices/tree/karsajobs/pkg/models/mongodb"
 
-//	"github.com/dicodingacademy/karsajobs/tree/master/pkg/models"
+	"github.com/agus-3rd-yoga/a433-microservices/tree/karsajobs/pkg/models"
 )
 
 func TestHomeHandler(t *testing.T) {
