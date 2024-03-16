@@ -81,9 +81,8 @@ jobs:
         with:
           context: .
           push: true
-          #tags: ${{ steps.meta.outputs.tags }}
+          tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          tags: todo-app:latest
             
   build-and-push-image-to-Dockerhub-registries:
 
