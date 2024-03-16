@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: mytodo-app
-        image: docker pull ghcr.io/agus-3rd-yoga/a433-microservices:todo-app
+        image: docker pull docker.io/agus3rdyoga/todo-app
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
