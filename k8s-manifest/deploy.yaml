@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mytodo-app
+  labels:
+    app: mytodo-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mytodo-app
+  template:
+    metadata:
+      labels:
+        app: mytodo-app
+    spec:
+      containers:
+      - name: mytodo-app
+        image: docker pull ghcr.io/agus-3rd-yoga/a433-microservices:todo-app
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 200m
+            memory: 200Mi
