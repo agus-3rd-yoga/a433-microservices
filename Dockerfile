@@ -23,7 +23,7 @@ FROM node:alpine AS builder
 WORKDIR /app
 COPY ./package.json .
 COPY ./yarn.lock .
-RUN yarn install
+RUN yarn install && yarn cache clean
 COPY . .
 EXPOSE 3000
 CMD ["yarn", "run", "dev"]
