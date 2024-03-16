@@ -69,20 +69,25 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Extract metadata (tags, labels) for Docker
-        id: meta
-        uses: docker/metadata-action@master
-        with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+      #- name: Extract metadata (tags, labels) for Docker
+        #id: meta
+        #uses: docker/metadata-action@master
+        #with:
+          #images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
       
 
-      - name: Building and pushing Docker image to Github Registry
-        uses: docker/build-push-action@master
-        with:
-          context: .
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+      #- name: Building and pushing Docker image to Github Registry
+        #uses: docker/build-push-action@master
+        #with:
+          #context: .
+          #push: true
+          #tags: ${{ steps.meta.outputs.tags }}
+          #labels: ${{ steps.meta.outputs.labels }}
+          
+      - name: 'Build Inventory Image'
+        run: |
+          docker build . --tag ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:latest
+          docker push ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:latest
             
   build-and-push-image-to-Dockerhub-registries:
 
