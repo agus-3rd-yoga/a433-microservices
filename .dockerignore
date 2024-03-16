@@ -2,3 +2,4 @@ Dockerfile
 *.md
 *.sh
 .github
+k8s-manifest
