@@ -16,4 +16,5 @@ WORKDIR /usr/share/nginx/html
 RUN rm -rf ./*
 COPY --from=builder /app .
 EXPOSE 80
+CMD ["yarn","run","dev"]
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
