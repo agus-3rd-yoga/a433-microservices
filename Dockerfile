@@ -19,7 +19,7 @@
 #CMD ["yarn","run","dev"]
 #ENTRYPOINT ["nginx", "-g", "daemon off;"]
 
-FROM node:alpine AS builder
+FROM node:alpine
 WORKDIR /app
 COPY ./package.json .
 COPY ./yarn.lock .
