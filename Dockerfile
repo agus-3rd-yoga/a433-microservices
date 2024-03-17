@@ -27,4 +27,4 @@ RUN yarn install && yarn cache clean
 COPY . .
 EXPOSE 3000
 #CMD ["yarn", "dev"]
-RUN yarn run dev
+ENTRYPOINT ["yarn", "run", "dev"]
