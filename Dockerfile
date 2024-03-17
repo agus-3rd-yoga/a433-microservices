@@ -26,4 +26,4 @@ COPY ./yarn.lock .
 RUN yarn install && yarn cache clean
 COPY . .
 EXPOSE 3000
-CMD ["yarn", "run"]
+CMD ["yarn", "dev"]
