@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: mytodo-app
-        image: docker.io/agus3rdyoga/todo-app
+        image: ghcr.io/agus3rdyoga/todo-app
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
