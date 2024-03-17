@@ -1,5 +1,5 @@
 ## Kita akan menggunakan base image nodejs versi 14
-FROM node:14-alpine
+FROM node:alpine
 
 ## Menentukan bahwa working directory untuk container 
 WORKDIR /app
@@ -17,4 +17,4 @@ RUN npm install --production --unsafe-perm && npm run build
 EXPOSE 8080/tcp
 
 ## Menjalankan container
-CMD [ "npm", "start" ]
+ENTRYPOINT [ "npm", "start" ]

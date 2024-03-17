@@ -1,0 +1,87 @@
+# This is a basic workflow to help you get started with Actions
+name: Proyek Pertama CI
+
+# Controls when the workflow will run
+on:
+
+  # Triggers the workflow on push or pull request events for any branch
+  push:
+    branches: [ "*" ]
+  pull_request:
+    branches: [ "*" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+
+  # Create unit test against specific version of Go
+  #test-app:
+    #runs-on: ubuntu-latest
+
+    # Add specific Go to be test against codes
+    #strategy:
+      #matrix:
+        #go-version: [ '1.20' ]
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    #steps:
+      #- uses: actions/checkout@v4
+      #- name: Setup Go ${{ matrix.go-version }}
+        #uses: actions/setup-go@v4
+        #with:
+          #go-version: ${{ matrix.go-version }}
+      #- name: Test with the Go CLI
+        #run: go test -v -short --count=1 $(go list ./...)
+
+  # Check Dockerfile format to match best practice as possible
+  #lint-dockerfile:
+
+    # The type of runner that the job will run on
+    #runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    #steps:
+      #- uses: actions/checkout@v4
+      #- name: Lint Dockerfile
+        #uses: hadolint/hadolint-action@master
+        #with:
+          #dockerfile: "Dockerfile"
+
+          # bypassed error if occurs, in fact config is fine
+          #failure-threshold: error
+
+
+  # This workflow contains a single job called "build-app-karsajobs"
+  build-app-proyek-pertama:
+
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@master
+        with:
+
+            # The branch, tag or SHA to checkout. When checking out the repository that
+            # triggered a workflow, this defaults to the reference or SHA for that event.
+            # Otherwise, uses the default branch.
+          ref: 'proyek-pertama'
+      
+        # Using Github provided API method instead to login to Dockerhub
+      - name: Login to Docker Hub
+        uses: docker/login-action@master
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      # Build & push newly created image to Docker Hub registry using proper naming match to docker rules
+      - name: Build and push
+        uses: docker/build-push-action@master
+        with:
+          context: .
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/item-app:latest

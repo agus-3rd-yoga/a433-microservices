@@ -3,10 +3,13 @@ src/node_modules
 .git
 .gitignore
 node_modules
-npm-debug.log
+*.log
 Dockerfile*
 docker-compose*
-README.md
+*.md
 LICENSE
 .vscode
-build_push_image.sh
+*.sh
+.github
+*.yml
+*.yaml
