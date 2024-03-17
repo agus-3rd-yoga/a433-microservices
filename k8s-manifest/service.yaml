@@ -5,7 +5,7 @@ metadata:
   labels:
     app: mytodo-app
 spec:
-  #type: 
+  type: LoadBalancer
   ports:
   - port: 80
     targetPort: 80
